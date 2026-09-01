@@ -1,0 +1,57 @@
+# ATM System
+
+pin = "1234"
+balance = 1000
+attempt = 1
+correct = False
+
+# PIN Check
+while attempt <= 3:
+    user_pin = input("Enter your PIN: ")
+
+    if user_pin == pin:
+        print("Correct PIN!")
+        correct = True
+        break
+    else:
+        print("Wrong PIN!")
+        attempt = attempt + 1
+
+if correct == False:
+    print("Your account is locked.")
+
+# ATM Menu
+while correct == True:
+    print("\n--- ATM MENU ---")
+    print("1. Check Balance")
+    print("2. Deposit")
+    print("3. Withdraw")
+    print("4. Log Out")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        print("Your balance is Nu.", balance)
+
+    elif choice == "2":
+        amount = int(input("Enter amount to deposit: "))
+        balance = balance + amount
+        print("Money deposited successfully!")
+        print("New balance: Nu.", balance)
+
+    elif choice == "3":
+        amount = int(input("Enter amount to withdraw: "))
+
+        if amount <= balance:
+            balance = balance - amount
+            print("Please collect your money.")
+            print("New balance: Nu.", balance)
+        else:
+            print("Not enough money!")
+
+    elif choice == "4":
+        print("Thank you for using the ATM!")
+        correct = False
+
+    else:
+        print("Invalid choice!")
